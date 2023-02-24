@@ -1,0 +1,18 @@
+docker ps -a 
+docker ps
+docker rm containerID
+docker start
+docker logs nome -f
+
+docker exec -it nome /bin/bash
+
+docker-compose up -d
+docker-compose stop 
+docker-compose down
+docker-compose start
+
+docker-compose up --force-recreate
+
+yarn typeorm migration:create src/shared/infra/typeorm/migrations/CreateCarImages
+
+ yarn typeorm migration:run -d src/shared/infra/typeorm/index.ts
