@@ -3,7 +3,7 @@ import { MigrationInterface, QueryRunner, Table, TableForeignKey } from "typeorm
 export class CreateSpecificationsCars1676161303917 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.createTable(
+        return await queryRunner.createTable(
             new Table({
                 name: "specifications_cars",
                 columns: [
@@ -18,7 +18,12 @@ export class CreateSpecificationsCars1676161303917 implements MigrationInterface
                         name: "created_at",
                         type: "timestamp",
                         default: "now()"
-                    }    
+                    },
+                    {
+                        name: "updated_at",
+                        type: "timestamp",
+                        default: "now()"
+                    }      
                 ],
                 foreignKeys: [
                     {
@@ -44,7 +49,7 @@ export class CreateSpecificationsCars1676161303917 implements MigrationInterface
 
     public async down(queryRunner: QueryRunner): Promise<void> {
 
-        await queryRunner.dropTable("specifications_cars")
+        return await queryRunner.dropTable("specifications_cars")
     }
 
 }

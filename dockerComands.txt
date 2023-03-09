@@ -13,6 +13,6 @@ docker-compose start
 
 docker-compose up --force-recreate
 
-yarn typeorm migration:create src/shared/infra/typeorm/migrations/CreateCarImages
+yarn typeorm migration:create src/shared/infra/typeorm/migrations/CreateRentals
 
  yarn typeorm migration:run -d src/shared/infra/typeorm/index.ts

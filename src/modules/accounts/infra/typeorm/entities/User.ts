@@ -1,10 +1,10 @@
 import {v4 as uuidv4} from 'uuid'
-import { Column, CreateDateColumn, Entity, PrimaryColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity("users")
 class User {
 
-    @PrimaryColumn()
+    @PrimaryGeneratedColumn('uuid')
     id: string
 
     @Column()
