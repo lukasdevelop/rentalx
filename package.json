@@ -6,11 +6,12 @@
   "scripts": {
     "dev": "ts-node-dev -r tsconfig-paths/register --poll --inspect --transpile-only --ignore-watch node_modules --respawn src/shared/infra/http/server.ts",
     "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
-    "test": "jest",
+    "test": "set NODE_ENV=test && jest",
     "seed:admin": "ts-node-dev -r tsconfig-paths/register src/shared/infra/typeorm/seed/admin.ts"
   },
   "dependencies": {
     "@types/bcryptjs": "^2.4.2",
+    "@types/supertest": "^2.0.12",
     "bcryptjs": "^2.4.3",
     "csv-parse": "^5.3.1",
     "dayjs": "^1.11.7",
@@ -20,7 +21,9 @@
     "multer": "^1.4.5-lts.1",
     "pg": "^8.8.0",
     "reflect-metadata": "^0.1.13",
+    "supertest": "^6.3.3",
     "swagger-ui-express": "^4.6.0",
+    "ts-node": "^10.9.1",
     "ts-node-dev": "^2.0.0",
     "tsyringe": "^4.7.0",
     "typeorm": "^0.3.10",

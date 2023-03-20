@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\anali\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add supertest @types/supertest -D
+  C:\Program Files\nodejs\node.exe C:\Users\anali\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js install
 
 PATH: 
   C:\Program Files\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\Go\bin;C:\ProgramData\chocolatey\bin;C:\Users\anali\AppData\Roaming\nvm;C:\Program Files\MongoDB\Server\5.0\bin;C:\Program Files\MongoDB\Tools\100\bin;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files\Azure Data Studio\bin;C:\Users\anali\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Program Files\nodejs\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\anali\AppData\Local\Microsoft\WindowsApps;C:\Users\anali\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\MySQL\MySQL Server 8.0\bin;C:\Users\anali\go\bin;C:\Users\anali\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Users\anali\.dotnet\tools;C:\Program Files\Azure Data Studio\bin;C:\Users\anali\AppData\Roaming\npm;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\tools\cmder\vendor\bin;C:\tools\cmder\bin;C:\tools\cmder
@@ -14,7 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: EPERM: operation not permitted, unlink 'c:\Users\anali\Documents\ESTUDOS\rocket\RENTALX\node_modules\.bin\ts-node-dev'
+  Error: EPERM: operation not permitted, unlink 'C:\Users\anali\Documents\ESTUDOS\rocket\RENTALX\node_modules\.bin\ts-node-dev'
 
 npm manifest: 
   {
@@ -25,7 +25,7 @@ npm manifest:
     "scripts": {
       "dev": "ts-node-dev -r tsconfig-paths/register --poll --inspect --transpile-only --ignore-watch node_modules --respawn src/shared/infra/http/server.ts",
       "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
-      "test": "jest",
+      "test": "set NODE_ENV=test && jest",
       "seed:admin": "ts-node-dev -r tsconfig-paths/register src/shared/infra/typeorm/seed/admin.ts"
     },
     "dependencies": {
@@ -41,6 +41,7 @@ npm manifest:
       "reflect-metadata": "^0.1.13",
       "swagger-ui-express": "^4.6.0",
       "ts-node-dev": "^2.0.0",
+      "ts-node": "^10.9.1",
       "tsyringe": "^4.7.0",
       "typeorm": "^0.3.10",
       "uuid": "^9.0.0"
