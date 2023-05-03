@@ -1,7 +1,7 @@
 import { ICreateRentalDTO } from "@modules/rentals/dtos/ICreateRentalDTO";
 import { IRentalsRepository } from "@modules/rentals/repositories/IRentalsRepository";
 import dataSource from "@shared/infra/typeorm";
-import { Repository } from "typeorm";
+import { IsNull, Repository } from "typeorm";
 import { Rental } from "../entities/Rental";
 
 
@@ -11,15 +11,33 @@ class RentalsRepository implements IRentalsRepository {
     constructor(){
         this.repository = dataSource.getRepository(Rental)
     }
+
+    async findByUserId(user_id: string): Promise<Rental[]> {
+        const rentals = await this.repository.find({
+            where: {
+                user_id
+            },
+            relations: ["car"]
+        })
+
+        return rentals
+    }
     
-    findById(id: string): Promise<Rental> {
-        throw new Error("Method not implemented.");
+    async findById(id: string): Promise<Rental> {
+        const rental = await this.repository.findOne({
+            where: {
+                id
+            }
+        })
+
+        return rental
     }
 
     async findOpenRentalByCar(car_id: string): Promise<Rental> {
         const openByCar = await this.repository.findOne({
             where:{
-                car_id
+                car_id,
+                end_date: null
             }
         })
         return openByCar
@@ -28,18 +46,22 @@ class RentalsRepository implements IRentalsRepository {
     async findOpenRentalByUser(user_id: string): Promise<Rental> {
         const openByUser = await this.repository.findOne({
             where: {
-                user_id
+                user_id,
+                end_date: null
             } 
         })
 
         return openByUser
     }
 
-    async create({car_id, expected_return_date, user_id}: ICreateRentalDTO): Promise<Rental> {
+    async create({car_id, expected_return_date, user_id, id, end_date, total}: ICreateRentalDTO): Promise<Rental> {
        const rental = this.repository.create({
         car_id,
         expected_return_date,
-        user_id
+        user_id,
+        id,
+        end_date,
+        total
        })
        
        await this.repository.save(rental)

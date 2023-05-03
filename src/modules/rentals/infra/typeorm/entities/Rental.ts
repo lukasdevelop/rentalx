@@ -1,4 +1,5 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
+import { Car } from '@modules/cars/infra/typeorm/entities/Car';
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
 import { v4 as uuidV4 } from 'uuid'
 
 @Entity("rentals")
@@ -6,6 +7,10 @@ class Rental {
     @PrimaryGeneratedColumn('uuid')
     id: string
     
+    @ManyToOne(() => Car)
+    @JoinColumn({name: "car_id"})
+    car: Car;
+
     @Column()
     car_id: string
 

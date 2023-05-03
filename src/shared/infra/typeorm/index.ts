@@ -5,6 +5,7 @@ import { Specification } from '@modules/cars/infra/typeorm/entities/Specificatio
 import { Car } from '@modules/cars/infra/typeorm/entities/Car'
 import { CarImage } from '@modules/cars/infra/typeorm/entities/CarImage'
 import { Rental } from '@modules/rentals/infra/typeorm/entities/Rental'
+import { UserTokens } from '@modules/accounts/infra/typeorm/entities/UsersTokens'
 
 const dataSource = new DataSource({
     type: 'postgres',
@@ -13,9 +14,9 @@ const dataSource = new DataSource({
     username: 'docker',
     password: 'ignite',
     database: 'rentalx',
-    synchronize: true,
+    synchronize: false,
     logging: false,
-    entities: [Category, Specification, User, Car, CarImage, Rental],
+    entities: [Category, Specification, User, Car, CarImage, Rental, UserTokens],
     migrations: [
         "./src/shared/infra/typeorm/migrations/*.ts"
     ],
