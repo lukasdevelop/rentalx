@@ -12,6 +12,9 @@ class CreateSpecificationController {
 
         await createSpecificationUseCase.execute({ name, description })
 
+        console.log('PASSOU AI')
+
+
         return response.status(201).send()
     }
 }
