@@ -1,8 +1,12 @@
 import "reflect-metadata"
 import "express-async-errors"
+import * as dotenv from 'dotenv'
 import express, { NextFunction, Response, Request } from 'express'
 import swaggerUi from 'swagger-ui-express'
 import swaggerFile from '../../../swagger.json'
+
+dotenv.config();
+
 
 import { router } from './routes'
 
